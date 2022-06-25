@@ -1,0 +1,27 @@
+
+
+.kpiCards{
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.currentMarketStats{
+    margin-top: 2em;
+    border: 1px solid #eee;
+    padding: 1em
+}
+
+.kpiCards .card{
+    width: 16rem;
+}
+
+.kpiCards .card .card-title{
+    margin-bottom: 0.75em;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.kpiCards .card .card-text{
+    text-align: right;
+}

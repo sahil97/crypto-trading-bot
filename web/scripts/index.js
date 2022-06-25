@@ -55,7 +55,6 @@ $(document).ready( () => {
             $.ajax({
                 type: "POST",
                 url: API_URI + "/login",
-                // The key needs to match your method's input parameter (case-sensitive).
                 data: JSON.stringify({ email: currentValEmail, password: currentValPwd }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

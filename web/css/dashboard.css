@@ -1,0 +1,62 @@
+.container-fluid{
+    padding: 0;
+}
+
+.sidebar{
+    background-color: rgb(26, 26, 39);
+    min-height: 100vh;
+    padding: 0;
+}
+
+.contentArea h1{
+    margin-top: 1em;
+}
+
+.mainHeading{
+    color: white;
+    margin-left: 20px;
+    /* font-size: 3rem; */
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.sidebarLinks{
+    padding-left: 0;
+}
+
+.sidebarLinks li{
+    list-style-type: none;
+    margin-bottom: 1em;
+    width: 100%;
+    /* border-bottom: 1px solid #eee; */
+    padding: 8px;
+    /* max-width: 250px; */
+    color: white;
+    cursor: pointer;
+    padding: 16px;
+    padding-left: 32px;
+    border-radius: 10px;
+}
+
+.sidebarLinks li:hover{
+    background-color: rgb(33, 45, 55);
+}
+
+.sidebarLinks li.selected{
+    background-color: rgb(33, 45, 55);
+}
+
+.listIcons{
+    font-size: 22px;
+    padding-right: 12px;
+}
+
+#spinner {
+    width: 100px; 
+    height: 100px;
+    z-index: 100;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    padding: 50px;
+}
