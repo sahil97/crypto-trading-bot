@@ -8,6 +8,17 @@ $(document).ready(() => {
         return new Date().toJSON().split('T')[0];
     });
 
+    let current_user_email = '';
+
+    if(localStorage.getItem('email')){
+        current_user_email = localStorage.getItem('email')
+    } else {
+        alert("Not logged in. Login first.")
+        let targetUri = window.location.href;
+        targetUri = targetUri.split('/').slice(0, -1).join('/');
+        // console.log(targetUri);
+        window.location.href = targetUri;
+    }
 
     const endBalElement = $('#endBal');
     const plAmtElement = $('#plAmt');
@@ -16,6 +27,33 @@ $(document).ready(() => {
     const numOfSellsElement = $('#numOfSells'); 
     const spinnerElement = $('#spinner');
     spinnerElement.hide();
+
+    $('#logoutBtn').on('click', (e) => {
+        localStorage.removeItem('email');
+        let targetUri = window.location.href;
+        targetUri = targetUri.split('/').slice(0, -1).join('/');
+        // console.log(targetUri);
+        window.location.href = targetUri;
+    })
+
+
+    $('#accDetails').on('click', (e) => {
+        e.preventDefault();
+
+        let targetUri = window.location.href;
+        targetUri = targetUri.split('/').slice(0, -1).join('/') + '/account.html';
+        // console.log(targetUri);
+        window.location.href = targetUri;
+    });
+
+    $('#stats').on('click', (e) => {
+        e.preventDefault();
+
+        let targetUri = window.location.href;
+        targetUri = targetUri.split('/').slice(0, -1).join('/') + '/stats.html';
+        // console.log(targetUri);
+        window.location.href = targetUri;
+    });
 
     $('#fetchBtn').on('click', (e) => {
         e.preventDefault();

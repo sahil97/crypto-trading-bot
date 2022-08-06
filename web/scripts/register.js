@@ -8,10 +8,27 @@ const verifyEmail = (email) => {
 
 $(document).ready( () => {
     
+    let currentName = '';
+    let nameValidated = false;
     let currentValEmail = '';
     let emailValidated = false;
     let currentValPwd = '';
     let pwdValidated = false;
+
+    $('#inputName').on('change', () => {
+        currentName = $('#inputName').val();
+
+        if(currentName.length < 1){
+            $('#inputName').removeClass('is-valid');
+            $('#inputName').addClass('is-invalid');
+            nameValidated = false;
+        }
+        else {
+            $('#inputName').removeClass('is-invalid');
+            $('#inputName').addClass('is-valid');
+            nameValidated = true;
+        }
+    });
 
     $('#inputEmail').on('change', () => {
         currentValEmail = $('#inputEmail').val(); 
@@ -48,24 +65,36 @@ $(document).ready( () => {
     })
 
 
-    $('#submitBtn').on('click', (e) => {
+    $('#loginBtn').on('click', (e) => {
         e.preventDefault();
-        if(emailValidated && pwdValidated){
+        let targetUri = window.location.href;
+        targetUri = targetUri.split('/').slice(0, -1).join('/');
+        // console.log(targetUri);
+        window.location.href = targetUri;
+    })
+
+    $('#registerBtn').on('click', (e) => {
+        e.preventDefault();
+
+        if(nameValidated && emailValidated && pwdValidated){
             
             $.ajax({
                 type: "POST",
-                url: API_URI + "/login",
+                url: API_URI + "/signup",
                 data: JSON.stringify({ email: currentValEmail, password: currentValPwd }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(data){
                     console.log(data);
-                    if(data.message == 'Logged In'){
+                    if(data.message  == 'User already exists'){
+                        $('#inputPassword').val('');
+                        window.alert("User already exists. Please try different email.")
+                    } else if(data.message == 'User added'){
                         // Add user's jwt token
                         // traverse to the next page
-                        localStorage.setItem('email', data.email);
-
-                        let targetUri = window.location.href + 'bot.html';
+                        let targetUri = window.location.href;
+                        targetUri = targetUri.split('/').slice(0, -1).join('/');
+                        // console.log(targetUri);
                         window.location.href = targetUri;
                     }
                 },
@@ -74,13 +103,6 @@ $(document).ready( () => {
                 }
             });
         }
-    })
-
-    $('#registerBtn').on('click', (e) => {
-        e.preventDefault();
-
-        let targetUri = window.location.href + 'register.html';
-        window.location.href = targetUri;
 
     })
 

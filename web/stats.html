@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Crypto Bot - Dashboard</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
+    <link href="https://fonts.googleapis.com/css?family=Red+Hat+Text:400,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  </head>
+  <body>
+
+
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-2 sidebar">
+                    <h3 class="mainHeading">Crypto Bot</h3>
+                    <ul class="sidebarLinks">
+                        <li id="stats" class="selected">
+                            <i class="bi bi-bar-chart-line-fill listIcons"></i>
+                            General Stats
+                        </li>
+                        <li>
+                            <i class="bi bi-robot listIcons"></i>
+                            Automated Bot
+                        </li>
+                        <li id="accDetails">
+                            <i class="bi bi-person-fill listIcons"></i>
+                            Account Details
+                        </li>
+                        <li id="logoutBtn">
+                            <i class="bi bi-box-arrow-left listIcons"></i>
+                            Logout
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-10 stage">
+                    <div class="container-fluid contentArea">
+                        <h2 class="heroHeading">General Market Stats</h2>
+                        
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr id="firstRow">
+                                    <th scope="col"></th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">1h %</th>
+                                    <th scope="col">24h %</th>
+                                    <th scope="col">30d %</th>
+                                    <th scope="col">Volume</th>
+
+                                </tr>
+                            </thead>
+                            <tbody id="mainTable">
+                        
+                            </tbody>
+                        </table>
+                        
+                        <container class="containerCards">
+                            <cards class="cards">
+                                <bitcoin style="width: 30%" class="btc">
+                                    <card class="asset-info">
+                                        <div class="title">
+                                            <img src="https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/btc.svg" width="15%"> 
+                                            <h1>Bitcoin</h1>
+                                        </div>
+                                        <div class="details">
+                                            <h2 class="asset-price" id="btcPrice"></h2>
+                                        </div>
+                                    </card>
+                                    <canvas id="btcChart"></canvas>
+                                </bitcoin>
+                        
+                                <ethereum style="width: 30%" class="ethereum">
+                                    <card class="asset-info">
+                                        <div class="title">
+                                            <img src="https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/eth.svg" width="10%"> 
+                                            <h1>Ethereum</h1>
+                                        </div>
+                                        <div class="details">
+                                            <h2 class="asset-price" id="ethPrice"></h2>
+                                        </div>
+                                    </card>
+                                    <canvas id="ethereumChart"></canvas>
+                                </ethereum>
+
+                                <xrp style="width: 30%" class="xrp">
+                                    <card class="asset-info">
+                                        <div class="title">
+                                            <img src="https://s3.us-east-2.amazonaws.com/nomics-api/static/images/currencies/XRP.svg" width="10%"> 
+                                            <h1>XRP</h1>
+                                        </div>
+                                        <div class="details">
+                                            <h2 class="asset-price" id="xrpPrice"></h2>
+                                        </div>
+                                    </card>
+                                    <canvas id="xrpChart"></canvas>
+                                </xrp>
+
+                                
+                            </cards>
+                          </container>
+                        
+                    </div>
+                </div>
+            </row>
+        </div>
+        
+
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+    <script src="scripts/bot.js"></script>
+    <script src="scripts/stats.js"></script>
+  </body>
+</html>
