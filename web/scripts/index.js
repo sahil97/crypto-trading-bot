@@ -68,6 +68,9 @@ $(document).ready( () => {
                         let targetUri = window.location.href + 'bot.html';
                         window.location.href = targetUri;
                     }
+                    else {
+                        alert(data.message)
+                    }
                 },
                 error: function(errMsg){
                     console.log(errMsg);

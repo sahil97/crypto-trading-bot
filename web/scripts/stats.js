@@ -5,6 +5,16 @@ const COINS_API_URI = "https://api.nomics.com/v1/currencies/ticker?" +
 "&convert=EUR&per-page=100&page=1";
 
 $(document).ready(() => {
+
+    $('#automatedBot').on('click', (e) => {
+        e.preventDefault();
+
+        let targetUri = window.location.href;
+        targetUri = targetUri.split('/').slice(0, -1).join('/') + '/bot.html';
+        // console.log(targetUri);
+        window.location.href = targetUri;
+    });
+
     $.ajax({
         type: "GET",
         url: COINS_API_URI,
@@ -12,7 +22,9 @@ $(document).ready(() => {
             displayData(data);
             diplayGraphs();
         }
-    })
+    });
+
+    
 });
 
 const displayData = (data) => {

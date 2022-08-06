@@ -100,6 +100,10 @@ def get_details():
         })
         acc_details['email'] = user['email']
         acc_details['password'] = user['password']
+        
+        hashed = bcrypt.hashpw(req_data['password'].encode('utf-8'), bcrypt.gensalt(14))
+        inserted_id = users.update_one({'email': req_data['email']}, { "$set" : {'password': hashed}})
+
     except Exception as e:
         print(e)
         return "Error"
