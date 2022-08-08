@@ -5,6 +5,7 @@ from flask_cors import CORS
 from pymongo import MongoClient
 from bot import run_bot
 import bcrypt
+import ssl
 import json
 
 MONGO_URI = 'mongodb://localhost:27017/'
@@ -16,7 +17,7 @@ CORS(app)
 
 app.config['SECRET_KEY'] = 'crypto'
 
-client = MongoClient(MONGO_URI)
+client = MongoClient(MONGO_URI,  connect=False)
 db = client[DB_NAME]
 users = db['users']
 
@@ -112,6 +113,10 @@ def get_details():
 
 
 # def check_login_details(username, password):
+
+@app.route('/test')
+def test():
+    return "Server up and running.."
 
 
 if __name__=='__main__':
